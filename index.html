@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relogio</title>
+  </head>
+  <body>
+    <h1>Relogio</h1>
+    <p id="clock"></p>
+    <script>
+      // Obter uma referência para o elemento HTML onde o relógio será exibido
+      var clockElement = document.getElementById("clock");
+
+      // Criar uma função que atualiza o relógio a cada segundo
+      function updateClock() {
+        // Obter a data e hora atual
+        var date = new Date();
+
+        // Extrair a hora, minuto e segundo da data e hora atual
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
+
+        // Adicionar um zero à esquerda dos valores de hora, minuto e segundo se eles forem menores que 10
+        if (hours < 10) {
+          hours = "0" + hours;
+        }
+        if (minutes < 10) {
+          minutes = "0" + minutes;
+        }
+        if (seconds < 10) {
+          seconds = "0" + seconds;
+        }
+
+        // Montar a string que representa a hora no formato HH:MM:SS
+        var clockString = hours + ":" + minutes + ":" + seconds;
+
+        // Atualizar o conteúdo do elemento HTML com a hora atual
+        clockElement.innerHTML = clockString;
+      }
+
+      // Chamar a função de atualização do relógio a cada segundo
+      setInterval(updateClock, 1000);
+    </script>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 24px;
+        text-align: center;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      p {
+        color: #666;
+      }
+
+      p#clock {
+        color: #000;
+      }
+
+      p#clock::before {
+        content: "Hora atual: ";
+      }
+
+      p#clock::after {
+        content: "";
+      }
+    </style>
+  </body>
+</html>
